@@ -1,0 +1,14 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:CustomDieApp.ViewModels"
+             x:Class="CustomDieApp.Views.CreateDieView"
+             x:DataType="vm:CreateDieViewModel">
+  <StackPanel Spacing="8" Margin="16">
+    <TextBlock Text="Sides (separate with a comma)" />
+    <TextBox Text="{Binding SidesText}" AcceptsReturn="True" Height="200" />
+    <StackPanel Orientation="Horizontal" Spacing="8">
+      <Button Content="Create" Command="{Binding Create}" />
+      <Button Content="Cancel" Command="{Binding Cancel}" />
+    </StackPanel>
+  </StackPanel>
+</UserControl>

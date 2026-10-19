@@ -14,6 +14,11 @@
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainViewModel />
     </Design.DataContext>
+
+
+    <Panel>
+  <StackPanel IsVisible="{Binding Creator, Converter={x:Static ObjectConverters.IsNull}}">
+
 <StackPanel>
 <Grid Margin="5"  HorizontalAlignment="Center"
               ColumnDefinitions="Auto, Auto"
@@ -21,13 +26,19 @@
     <TextBlock Grid.Row="0" Grid.Column="0" Margin="10">Die size: </TextBlock>
     <TextBlock Grid.Row="0" Grid.Column="1" Margin="0 5" Text="{Binding dieSize}"/>
     <TextBlock Grid.Row="1" Grid.Column="0" Margin="10">Die sides: </TextBlock>
-    <TextBlock Grid.Row="1" Grid.Column="1" Width="100" Margin="0 5" Text="{Binding SidesText}"/>
+    <TextBlock Grid.Row="1" Grid.Column="1" Width="100" Margin="0 5" Text="{Binding sidesText}"/>
     </Grid>
     <CheckBox HorizontalAlignment="Center" IsChecked="{Binding NoDuplicates}" Content="No duplicate rolls" />
     <NumericUpDown HorizontalAlignment="Center" Width="150" Value="{Binding HowManyRolls}" Minimum="1" FormatString="0" />
     <Button HorizontalAlignment="Center" Command="{Binding RollADieCommand}">Roll the die</Button>
     <TextBlock Text="{Binding RollResults}" HorizontalAlignment="Center"/>
-    <Button HorizontalAlignment="Center">Make a new die (TODO)</Button>
 </StackPanel>
+
+
+    <Button Content="New die" Command="{Binding StartCreating}" />
+  </StackPanel>
+
+  <ContentControl Content="{Binding Creator}" />
+</Panel>
 
 </Window>
