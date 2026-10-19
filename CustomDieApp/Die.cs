@@ -5,27 +5,11 @@ using System.Collections.Generic;
 
 public class Die{
 
-    private int size;
-    private List<string> sides;
+    //public int Size { get; set; } Sides.Count should be good enough; size can be a separate variable in the "make new die" window
+    public List<string> Sides { get; set; }
 
-    public Die(int sizeC, List<string> sidesC){
-        size = sizeC;
-        sides = sidesC;
-    }
-
-    public int getSize(){
-        return size;
-    }
-
-    public void setSize(int change){
-        size = change;
-    }
-
-    public List<string> getSides(){
-        return sides;
-    }
-
-    public void setSides(List<string> change){
-        sides = change;
+    public Die(List<string> sidesC)
+    {
+        Sides = sidesC;
     }
 }

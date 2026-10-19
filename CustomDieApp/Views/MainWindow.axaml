@@ -14,9 +14,21 @@
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainViewModel />
     </Design.DataContext>
+<StackPanel>
+<Grid Margin="5"  HorizontalAlignment="Center"
+              ColumnDefinitions="120, 100"
+              RowDefinitions="Auto, Auto">
+    <TextBlock Grid.Row="0" Grid.Column="0" Margin="10">Die size: </TextBlock>
+    <TextBlock Grid.Row="0" Grid.Column="1" Margin="0 5" Text="{Binding dieSize}"
+             />
 
-    <TextBlock Text="{Binding SidesText}"
-             HorizontalAlignment="Center"
-             VerticalAlignment="Center" />
+            <TextBlock Grid.Row="1" Grid.Column="0" Margin="10">Die sides: </TextBlock>
+    <TextBlock Grid.Row="1" Grid.Column="1" Margin="0 5" Text="{Binding SidesText}"
+             />
+    </Grid>
+    <Button HorizontalAlignment="Center" Command="{Binding RollADieCommand}">Roll the die</Button>
+    <TextBlock Text="{Binding RollResults}" HorizontalAlignment="Center"/>
+    <Button HorizontalAlignment="Center">Make a new die (TODO)</Button>
+</StackPanel>
 
 </Window>
