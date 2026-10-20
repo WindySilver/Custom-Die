@@ -58,7 +58,10 @@ public partial class MainViewModel : ViewModelBase
     {
         Creator = new CreateDieViewModel(die =>
         {
-            if (die != null) ActiveDie = die;
+            if (die != null) {
+                ActiveDie = die;
+                RollResults = "";
+            }
             Creator = null;
         });
     }

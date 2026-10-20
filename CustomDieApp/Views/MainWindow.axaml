@@ -7,7 +7,7 @@
         x:Class="CustomDieApp.Views.MainWindow"
         x:DataType="vm:MainViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="CustomDieApp">
+        Title="Custom Die App">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -16,32 +16,23 @@
     </Design.DataContext>
 
 
-    <Panel>
-  <StackPanel IsVisible="{Binding Creator, Converter={x:Static ObjectConverters.IsNull}}">
-
-<StackPanel>
-<Grid Margin="5"  HorizontalAlignment="Center"
-              ColumnDefinitions="Auto, Auto"
-              RowDefinitions="Auto, Auto">
-    <TextBlock Grid.Row="0" Grid.Column="0" Margin="10">Die size: </TextBlock>
-    <TextBlock Grid.Row="0" Grid.Column="1" Margin="0 5" Text="{Binding dieSize}"/>
-    <TextBlock Grid.Row="1" Grid.Column="0" Margin="10">Die sides: </TextBlock>
-    <TextBlock Grid.Row="1" Grid.Column="1" Width="100" Margin="0 5" Text="{Binding sidesText}"/>
-    </Grid>
-    <CheckBox HorizontalAlignment="Center" IsChecked="{Binding NoDuplicates}" Content="No duplicate rolls" />
-    <NumericUpDown HorizontalAlignment="Center" Width="150" Value="{Binding HowManyRolls}" Minimum="1" FormatString="0" />
-    <Button HorizontalAlignment="Center" Command="{Binding RollADieCommand}">Roll the die</Button>
-    <TextBlock Text="{Binding RollResults}" HorizontalAlignment="Center"/>
-    <Button Content="Save the die" Click="SaveDie_Click"/>
-    <Button Content="Load a die" Click="LoadDie_Click"/>
-
-</StackPanel>
-
-
-    <Button Content="New die" Command="{Binding StartCreating}" />
-  </StackPanel>
-
-  <ContentControl Content="{Binding Creator}" />
-</Panel>
+  <Panel>
+    <StackPanel HorizontalAlignment="Center" IsVisible="{Binding Creator, Converter={x:Static ObjectConverters.IsNull}}">
+      <Grid Margin="5" ColumnDefinitions="Auto, Auto" RowDefinitions="Auto, Auto">
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Die size: "/>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding dieSize}"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Die sides: "/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding sidesText}"/>
+      </Grid>
+        <CheckBox IsChecked="{Binding NoDuplicates}" Content="No duplicate rolls" />
+        <NumericUpDown Value="{Binding HowManyRolls}" Minimum="1" FormatString="0" />
+        <Button Command="{Binding RollADieCommand}">Roll the die</Button>
+        <TextBlock Text="{Binding RollResults}"/>
+        <Button Content="New die" Command="{Binding StartCreating}" />
+        <Button Content="Save the die" Click="SaveDie_Click"/>
+        <Button Content="Load a die" Click="LoadDie_Click"/>
+      </StackPanel>
+      <ContentControl Content="{Binding Creator}" />
+  </Panel>
 
 </Window>
