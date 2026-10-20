@@ -32,6 +32,9 @@
     <NumericUpDown HorizontalAlignment="Center" Width="150" Value="{Binding HowManyRolls}" Minimum="1" FormatString="0" />
     <Button HorizontalAlignment="Center" Command="{Binding RollADieCommand}">Roll the die</Button>
     <TextBlock Text="{Binding RollResults}" HorizontalAlignment="Center"/>
+    <Button Content="Save the die" Click="SaveDie_Click"/>
+    <Button Content="Load a die" Click="LoadDie_Click"/>
+
 </StackPanel>
 
 
