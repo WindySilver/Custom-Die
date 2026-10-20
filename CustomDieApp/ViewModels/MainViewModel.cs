@@ -13,6 +13,7 @@ using Avalonia.Interactivity;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Platform.Storage;
 using Avalonia.Controls;
+using Avalonia.Styling;
 
 namespace CustomDieApp.ViewModels;
 
@@ -44,6 +45,19 @@ public partial class MainViewModel : ViewModelBase
             {
                 OnPropertyChanged(nameof(sidesText));
                 OnPropertyChanged(nameof(dieSize));
+            }
+        }
+    }
+
+    private bool _isDarkMode = true;
+    public bool IsDarkMode
+    {
+        get => _isDarkMode;
+        set
+        {
+            if (SetProperty(ref _isDarkMode, value) && Application.Current is { } app)
+            {
+                app.RequestedThemeVariant = value ? ThemeVariant.Dark : ThemeVariant.Light;
             }
         }
     }
