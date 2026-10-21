@@ -120,7 +120,13 @@ public partial class MainViewModel : ViewModelBase
             using var reader = new StreamReader(stream);
             string fileContent = await reader.ReadToEndAsync();
             // Make a new die to replace ActiveDie based on the side list from the file
-            ActiveDie = new Die(fileContent.Split(',').ToList());
+            ActiveDie = new Die(fileContent.Split(new[] { ',' },
+                   StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+            .ToList());
+            // Technically, I could do no-duplicate-side sanitation for loading too
+            // but honestly, if someone's trying to load hand-made duplicate sides,
+            // they probably know what they want, so might as well let them
+
             // Empty roll result text upon loading
             RollResults = "";
         }

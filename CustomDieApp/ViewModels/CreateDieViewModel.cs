@@ -24,8 +24,11 @@ public partial class CreateDieViewModel : ViewModelBase
                    StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
             .ToList();
 
+        // No-duplicate-side sanitation
+        sides = sides.Distinct().ToList();
+
         if (sides.Count < 2) {
-            ErrorText = "The die needs at least two sides";
+            ErrorText = "The die needs at least two unique sides";
             return;
             }
         _onFinished(new Die(sides));
